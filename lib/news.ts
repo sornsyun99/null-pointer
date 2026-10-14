@@ -43,7 +43,7 @@ async function rss(f: (typeof FEEDS)[number]): Promise<NewsItem[]> {
     const date = tag(b, "pubDate") || tag(b, "updated") || tag(b, "published");
     const t = date ? new Date(date).getTime() : NaN;
     const ageH = isNaN(t) ? 48 : (now - t) / 36e5;
-    return { title: tag(b, "title"), url: link, source: f.source, score: Math.max(0, 300 - ageH * 6), published_at: isNaN(t) ? null : new Date(t).toISOString() };
+    return { title: tag(b, "title"), url: link, source: f.source, score: Math.round(Math.max(0, 300 - ageH * 6)), published_at: isNaN(t) ? null : new Date(t).toISOString() };
   }).filter((i) => i.title && i.url);
 }
 
