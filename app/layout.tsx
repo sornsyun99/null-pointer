@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nullpointer.men"),
+  openGraph: { title: "Null Pointer — Daily AI & Tech Roasts", url: "https://nullpointer.men", siteName: "Null Pointer", type: "website" },
   title: "Null Pointer — Daily AI & Tech Roasts",
   description: "A virtual AI persona roasting today's tech and AI news. Dark humor, real takes.",
 };
