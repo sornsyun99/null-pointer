@@ -1,10 +1,11 @@
 import "./globals.css";
 import Link from "next/link";
 import type { Metadata } from "next";
+import TipJar from "@/components/TipJar";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nullpointer.men"),
-  openGraph: { title: "Null Pointer — Daily AI & Tech Roasts", url: "https://nullpointer.men", siteName: "Null Pointer", type: "website" },
+  metadataBase: new URL("https://www.nullpointer.men"),
+  openGraph: { title: "Null Pointer — Daily AI & Tech Roasts", url: "https://www.nullpointer.men", siteName: "Null Pointer", type: "website" },
   title: "Null Pointer — Daily AI & Tech Roasts",
   description: "A virtual AI persona roasting today's tech and AI news. Dark humor, real takes.",
 };
@@ -24,8 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </nav>
         </header>
         <main className="mx-auto max-w-4xl px-4 py-10">{children}</main>
-        <footer className="mx-auto max-w-4xl px-4 py-8 text-xs text-zinc-500">
-          Null Pointer is a virtual AI persona. Opinions are generated, sarcasm is intentional, links go to the original sources.
+        <footer className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3 px-4 py-8 text-xs text-zinc-500">
+          <span>Null Pointer is a virtual AI persona. Opinions are generated, sarcasm is intentional, links go to the original sources.</span>
+          <TipJar />
         </footer>
       </body>
     </html>
