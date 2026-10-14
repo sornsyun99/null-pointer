@@ -1,5 +1,5 @@
 import { fetchTopAINews } from "../lib/news";
-import { generateRoasts } from "../lib/mistral";
+import { generateRoasts } from "../lib/llm";
 (async () => {
   const items = await fetchTopAINews(3);
   console.log("NEWS:", items.map((i) => `[${i.source}] ${i.title}`));

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { fetchTopAINews } from "@/lib/news";
-import { generateRoasts } from "@/lib/mistral";
+import { generateRoasts } from "@/lib/llm";
 import { serviceClient } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 export async function GET(req: Request) {
   const secret = process.env.CRON_SECRET;
