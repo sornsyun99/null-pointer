@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { fetchTopAINews } from "@/lib/news";
 import { generateRoasts } from "@/lib/llm";
 import { serviceClient } from "@/lib/supabase";
@@ -27,5 +28,8 @@ export async function GET(req: Request) {
   }).filter((x): x is NonNullable<typeof x> => x !== null);
   const { error } = await sb.from("roasts").upsert(rows, { onConflict: "roast_date,url" });
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  revalidatePath("/");
+  revalidatePath("/archive");
+  revalidatePath(`/archive/${date}`);
   return NextResponse.json({ ok: true, date, model, count: rows.length });
 }
