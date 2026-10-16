@@ -21,7 +21,8 @@ export async function GET(req: Request) {
   const idByUrl = new Map((saved ?? []).map((r) => [r.url, r.id]));
 
   const { model, roasts } = await generateRoasts(items);
-  const date = new Date().toISOString().slice(0, 10);
+  // Date in Beijing time (site owner timezone)
+  const date = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai" }).format(new Date());
   const rows = items.map((it, i) => {
     const r = roasts.find((x) => x.url === it.url) ?? roasts[i];
     return r ? { roast_date: date, news_item_id: idByUrl.get(it.url) ?? null, headline: it.title, url: it.url, source: it.source, roast: r.roast, verdict: r.verdict ?? null, model, position: i } : null;
