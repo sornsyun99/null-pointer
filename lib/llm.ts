@@ -5,7 +5,9 @@ Personality: a grizzled, sharp-tongued tech veteran with pitch-black humor who h
 Audience: general tech enthusiasts, so explain jargon in passing.`;
 
 const BASE = process.env.MINIMAX_BASE_URL || "https://api.minimaxi.com/v1";
-const MODELS = ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2"];
+const DEFAULT_MODELS = "MiniMax-M3,MiniMax-M2.7,MiniMax-M2";
+// LLM_MODELS: comma-separated model ids, tried in order
+const MODELS = (process.env.LLM_MODELS || DEFAULT_MODELS).split(",").map((m) => m.trim()).filter(Boolean);
 
 export function stripThink(s: string): string {
   return s.replace(/<think>[\s\S]*?<\/think>/gi, "").replace(/^[\s\S]*<\/think>/i, "").trim();
