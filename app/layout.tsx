@@ -2,6 +2,8 @@ import "./globals.css";
 import Link from "next/link";
 import type { Metadata } from "next";
 import TipJar from "@/components/TipJar";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nullpointer.men"),
@@ -29,6 +31,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <span>Null Pointer is a virtual AI persona. Opinions are generated, sarcasm is intentional, links go to the original sources.</span>
           <TipJar />
         </footer>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
